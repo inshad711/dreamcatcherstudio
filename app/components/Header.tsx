@@ -529,12 +529,13 @@ const Header: React.FC = () => {
             className="flex flex-col items-start leading-none"
             onClick={() => setIsMobileMenuOpen(false)}
           >
-            <span className="text-xl font-serif tracking-widest text-gray-800">
-              FAWAAHATUL
-            </span>
-            <span className="text-xs font-serif tracking-widest mt-1 text-gray-800 opacity-80">
-              KHALEEJ
-            </span>
+            <Image
+              width={200}
+              height={200}
+              src="/image/logo1.png" // replace with your logo path
+              alt="Dream Catcher Studio Logo"
+              className="w-22 h-auto transition-all duration-300"
+            />
           </Link>
 
           <button
