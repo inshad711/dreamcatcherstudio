@@ -20,8 +20,8 @@
 // ];
 
 // // Note: Replace the mock image URLs with your actual image paths.
-// // For the component to look exactly like the image, ensure your images 
-// // are named as listed above and placed in your public/images directory, 
+// // For the component to look exactly like the image, ensure your images
+// // are named as listed above and placed in your public/images directory,
 // // or update the URLs to point to the correct locations.
 
 // const PhotographySection: React.FC = () => {
@@ -159,101 +159,112 @@
 
 // export default PortfolioSection;
 
-'use client';
+"use client";
 
-import Image from 'next/image';
-import { useState } from 'react';
+import Image from "next/image";
+import { useState } from "react";
 
 interface PortfolioItem {
-    id: number;
-    src: string;
-    alt: string;
-    title: string;
+  id: number;
+  src: string;
+  alt: string;
+  title: string;
 }
 
 const portfolioItems: PortfolioItem[] = [
-    {
-        id: 1,
-        src: 'https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img9.jpg',
-        alt: 'Bright Sunshine Photography',
-        title: 'Bright Sunshine Photography',
-    },
-    {
-        id: 2,
-        src: 'https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img13.jpg',
-        alt: 'Iceland Model Photo Session',
-        title: 'Iceland Model Photo Session',
-    },
-    {
-        id: 3,
-        src: 'https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img10.jpg',
-        alt: 'Sun-downers Love Photography',
-        title: 'Sun-downers Love Photography',
-    },
-    {
-        id: 4,
-        src: 'https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img12.jpg',
-        alt: 'Brown Girl Next Door Photo Shoot',
-        title: 'Brown Girl Next Door Photo Shoot',
-    },
-    {
-        id: 5,
-        src: 'https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img14-1.jpg',
-        alt: 'Fashion Next Level Photography',
-        title: 'Fashion Next Level Photography',
-    },
-    {
-        id: 6,
-        src: 'https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img11.jpg',
-        alt: 'Summer Sadness Photography',
-        title: 'Summer Sadness Photography',
-    },
+  {
+    id: 1,
+    src: "https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img9.jpg",
+    alt: "Bright Sunshine Photography",
+    title: "Bright Sunshine Photography",
+  },
+  {
+    id: 2,
+    src: "https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img13.jpg",
+    alt: "Iceland Model Photo Session",
+    title: "Iceland Model Photo Session",
+  },
+  {
+    id: 3,
+    src: "https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img10.jpg",
+    alt: "Sun-downers Love Photography",
+    title: "Sun-downers Love Photography",
+  },
+  {
+    id: 4,
+    src: "https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img12.jpg",
+    alt: "Brown Girl Next Door Photo Shoot",
+    title: "Brown Girl Next Door Photo Shoot",
+  },
+  {
+    id: 5,
+    src: "https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img14-1.jpg",
+    alt: "Fashion Next Level Photography",
+    title: "Fashion Next Level Photography",
+  },
+  {
+    id: 6,
+    src: "https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img11.jpg",
+    alt: "Summer Sadness Photography",
+    title: "Summer Sadness Photography",
+  },
 ];
 
+const images = Array.from({ length: 10 }, (_, i) => ({
+  id: i + 1,
+  src: `/portfolio/${i + 1}.webp`,
+  title: `Project ${i + 1}`,
+}));
+
 const PortfolioSection: React.FC = () => {
-    const [hoveredItem, setHoveredItem] = useState<number | null>(null);
+  const [hoveredItem, setHoveredItem] = useState<number | null>(null);
 
-    return (
-        <section id='porfolio' className="bg-black py-16">
-            <div className="templateContainer">
-                {/* Title Section */}
-                <div className="text-center mb-12">
+  return (
+    <section id="porfolio" className="bg-black py-16">
+      <div className="templateContainer">
+        {/* Title Section */}
+        <div className="text-center mb-12">
+          <h3 className="elementskit-section-subtitle text-lg sm:text-xl font-medium text-white uppercase mb-2 relative after:content-[''] after:absolute after:left-1/2 after:transform after:-translate-x-1/2 after:-bottom-2 after:w-20 after:h-0.5 after:bg-white">
+            OUR PORTFOLIO
+          </h3>
+        </div>
 
-                    <h3 className="elementskit-section-subtitle text-lg sm:text-xl font-medium text-white uppercase mb-2 relative after:content-[''] after:absolute after:left-1/2 after:transform after:-translate-x-1/2 after:bottom-0 after:w-20 after:h-0.5 after:bg-white">
-                        OUR PORTFOLIO
-                    </h3>
+        {/* Grid Section - Using images directly from your provided code */}
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 max-w-6xl mx-auto">
+          {images.map((item, index) => (
+            <div
+              key={item.id}
+              className="relative group cursor-pointer overflow-hidden rounded-md aspect-square bg-black"
+              onMouseEnter={() => setHoveredItem(item.id)}
+              onMouseLeave={() => setHoveredItem(null)}
+            >
+              <Image
+                src={item.src}
+                alt={`Portfolio Image ${index + 1}`}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-105"
+              />
 
+              {/* Hover Overlay */}
+              <div
+                className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent transition-all duration-500 flex items-end p-3 ${
+                  hoveredItem === item.id
+                    ? "opacity-100"
+                    : "opacity-0 group-hover:opacity-100"
+                }`}
+              >
+                <div className="w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 delay-150">
+                  <span className="block text-white text-xs md:text-sm font-semibold uppercase tracking-wider text-left bg-black/20 px-2 py-1 rounded">
+                    {item.title}
+                  </span>
                 </div>
-
-                {/* Grid Section - Using images directly from your provided code */}
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-2 md:gap-4 max-w-6xl mx-auto">
-                    {portfolioItems.map((item) => (
-                        <div
-                            key={item.id}
-                            className="relative group cursor-pointer overflow-hidden rounded-md aspect-square bg-black"
-                            onMouseEnter={() => setHoveredItem(item.id)}
-                            onMouseLeave={() => setHoveredItem(null)}
-                        >
-                            <Image
-                                src={item.src}
-                                alt={item.alt}
-                                fill
-                                className="object-cover transition-transform duration-500 group-hover:scale-105"
-                            />
-                            {/* Hover overlay mimicking accordion slide-up */}
-                            <div className={`absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent transition-all duration-500 flex items-end p-3 ${hoveredItem === item.id ? 'opacity-100' : 'opacity-0 group-hover:opacity-100'}`}>
-                                <div className="w-full transform translate-y-2 group-hover:translate-y-0 transition-transform duration-300 delay-150">
-                                    <span className="block text-white text-xs md:text-sm font-semibold uppercase tracking-wider text-left bg-black/20 px-2 py-1 rounded">
-                                        {item.title}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
+              </div>
             </div>
-        </section>
-    );
+          ))}
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default PortfolioSection;
