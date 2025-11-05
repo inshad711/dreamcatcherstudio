@@ -48,7 +48,7 @@ const Footer: React.FC = () => {
                 <Image
                   width={200}
                   height={200}
-                  src="/image/logo1.jpg" // replace with your logo path
+                  src="/logo/logo2.png" // replace with your logo path
                   alt="Dream Catcher Studio Logo"
                   className="w-22 h-auto transition-all duration-300"
                 />
