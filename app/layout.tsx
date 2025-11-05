@@ -13,7 +13,7 @@ const MainFont = Lexend({
 export async function generateMetadata() {
   const siteUrl = "https://dreamcatcherstudio.vercel.app";
   const siteName = "DreamCatcher Studio";
-  const logoUrl = `${siteUrl}/logo/logo2.png`;
+  const logoUrl = `${siteUrl}/logo/logo3.png`;
 
   return {
     title: `${siteName} | Creative Studio in Mumbai`,
