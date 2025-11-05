@@ -92,9 +92,9 @@ const Header: React.FC = () => {
           <div className="hidden md:flex gap-2">
             <a
               href="tel:+919819817022"
-              className={`relative overflow-hidden px-6 py-2 text-sm tracking-wide bg-white border-Textprimary text-Textprimary flex items-center gap-2 justify-center cursor-pointer transition-all duration-500 ease-in-out  hover:scale-100 
+              className={`relative overflow-hidden px-6 py-2 text-sm tracking-wide bg-[#efeef1]  border-Textprimary text-Textprimary flex items-center gap-2 justify-center cursor-pointer transition-all duration-500 ease-in-out  hover:scale-100 
       before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-black before:to-black before:transition-all before:duration-500 before:ease-in-out before:z-[-1] 
-      hover:text-white hover:before:left-0 rounded-md font-medium`}
+      hover:text-white hover:before:left-0  font-medium`}
             >
               <PhoneCall size={16} />
               Call Now
