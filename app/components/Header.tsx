@@ -81,12 +81,25 @@ const Header: React.FC = () => {
 
         <div className="flex-1 flex justify-end items-center">
           <a
-            href="tel:+11234567890" // Replace with your actual phone number
-            className={`px-4 py-3 cursor-pointer text-sm  font-medium  transition-colors duration-200 shadow-xl ${buttonBg} lg:px-5 lg:py-2 lg:text-base flex items-center`}
+            href="tel:+919819817022"
+            className={`w-10 h-10 cursor-pointer text-sm   items-center justify-center md:hidden ${
+              isScrolled ? "text-black" : "text-white"
+            } font-medium  transition-colors duration-200   lg:text-base flex items-center`}
           >
-            <PhoneCall className="w-4 h-4 inline-block mr-2" />
-            Call Now
+            <PhoneCall size={22} className=" inline-block mr-2" />
           </a>
+
+          <div className="hidden md:flex gap-2">
+            <a
+              href="tel:+919819817022"
+              className={`relative overflow-hidden px-6 py-2 text-sm tracking-wide bg-white border-Textprimary text-Textprimary flex items-center gap-2 justify-center cursor-pointer transition-all duration-500 ease-in-out  hover:scale-100 
+      before:absolute before:top-0 before:-left-full before:w-full before:h-full before:bg-gradient-to-r before:from-black before:to-black before:transition-all before:duration-500 before:ease-in-out before:z-[-1] 
+      hover:text-white hover:before:left-0 rounded-md font-medium`}
+            >
+              <PhoneCall size={16} />
+              Call Now
+            </a>
+          </div>
 
           <button
             className="md:hidden ml-2 p-1"
