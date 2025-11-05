@@ -1,5 +1,4 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { TextAlignEnd, X, PhoneCall } from "lucide-react";
@@ -73,7 +72,7 @@ const Header: React.FC = () => {
             <Image
               width={200}
               height={200}
-              src={isScrolled ? "/image/logo1.png" : "/logo/logo2.png"}
+              src={isScrolled ? "/image/logo1.png" : "/logo/logo5.png"}
               alt="Dream Catcher Studio Logo"
               className="w-22 h-auto transition-all duration-300"
             />

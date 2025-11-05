@@ -3,6 +3,7 @@ import { Lexend } from "next/font/google";
 import "./globals.css";
 import Header from "./components/Header";
 import MainFooter from "./components/Footer";
+import { Toaster } from "react-hot-toast";
 
 const MainFont = Lexend({
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${MainFont.className} antialiased`}>
+        <Toaster />
         <Header />
         {children}
         <MainFooter />

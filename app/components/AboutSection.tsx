@@ -160,7 +160,7 @@ const AboutSection: React.FC = () => {
             <Image
               width={1000}
               height={1000}
-              src="/portfolio/123.jpg"
+              src="/image/about.png"
               alt="Professional Photographer Portrait"
               className="w-full h-full object-cover min-h-[400px] md:min-h-full"
               style={{ filter: "brightness(0.9)", minHeight: "550px" }}
