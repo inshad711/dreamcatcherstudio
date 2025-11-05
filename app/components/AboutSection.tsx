@@ -128,6 +128,7 @@
 
 // export default AboutSection;
 
+import Image from "next/image";
 import React from "react";
 
 // Custom SVG for the Play Button overlay
@@ -156,8 +157,10 @@ const AboutSection: React.FC = () => {
         <div className="flex flex-col md:flex-row gap-12 lg:gap-20">
           {/* LEFT COLUMN: Image & Video Player Placeholder */}
           <div className="md:w-5/12 relative rounded-xl overflow-hidden shadow-2xl">
-            <img
-              src="https://demo.bosathemes.com/photox/wp-content/uploads/sites/63/2025/07/photox-img13.jpg"
+            <Image
+              width={1000}
+              height={1000}
+              src="/portfolio/123.jpg"
               alt="Professional Photographer Portrait"
               className="w-full h-full object-cover min-h-[400px] md:min-h-full"
               style={{ filter: "brightness(0.9)", minHeight: "550px" }}
