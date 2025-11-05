@@ -4,6 +4,7 @@ import Link from "next/link";
 import { TextAlignEnd, X, PhoneCall } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { motion } from "framer-motion";
 
 interface NavItem {
   title: string;
@@ -118,67 +119,56 @@ const Header: React.FC = () => {
       {/* --- Overlay (Dim Background) --- */}
       {isMobileMenuOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-300 md:hidden"
+          className="fixed inset-0 bg-black/70 bg-opacity-50 z-40 transition-opacity duration-300 md:hidden"
           onClick={() => setIsMobileMenuOpen(false)}
         ></div>
       )}
 
-      {/* --- Mobile Menu (Slide from Left with Logo) --- */}
+      {/* --- New Mobile Slide Menu using improved UI --- */}
       <div
-        className={`md:hidden fixed top-0 left-0 h-full w-3/4 max-w-sm bg-white shadow-xl transition-all duration-300 ease-out transform z-50 ${mobileMenuClasses}`}
+        className={`md:hidden fixed top-0 left-0 h-full w-3/4 max-w-sm bg-white shadow-xl transform transition-all duration-300 z-50 ${
+          isMobileMenuOpen
+            ? "translate-x-0 opacity-100 "
+            : "-translate-x-full opacity-0"
+        }`}
       >
-        {/* Mobile Menu Header (Logo + Close Button) */}
+        {/* Header */}
         <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200">
           <Link
             href="/"
-            className="flex flex-col items-start leading-none"
+            className="flex items-center gap-2"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <Image
-              width={200}
-              height={200}
-              src="/image/logo1.png" // replace with your logo path
+              width={160}
+              height={160}
+              src="/image/logo1.png"
               alt="Dream Catcher Studio Logo"
-              className="w-22 h-auto transition-all duration-300"
+              className="w-full h-20"
             />
           </Link>
-
-          <button
-            onClick={() => setIsMobileMenuOpen(false)}
-            aria-label="Close Menu"
-          >
-            <X className="w-6 h-6 text-gray-700" />
-          </button>
         </div>
 
-        {/* Mobile Nav Links */}
-        <ul className="flex flex-col space-y-2 p-6">
-          {mainNavItems.map((item) => {
-            const isActive = pathname === item.href;
-            return (
-              <Link
-                key={item.title}
-                href={item.href}
-                className={`text-gray-800 montserratCTA font-semibold py-2 px-3 rounded hover:bg-gray-100 transition-colors ${
-                  isActive ? "text-yellow-600" : ""
-                }`}
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {item.title}
-              </Link>
-            );
-          })}
+        <div className="relative overflow-hidden mt-4 w-full h-full overflow-y-auto px-6 pb-8">
+          <div>
+            {mainNavItems.map((item, index) => (
+              <div key={item.title}>
+                <Link
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-sm uppercase tracking-wide font-medium text-gray-800 block py-3 transition hover:text-yellow-600"
+                >
+                  {item.title}
+                </Link>
 
-          {/* ✅ Direct Call Button in Mobile Menu */}
-          <a
-            href="tel:+11234567890" // Replace with your actual phone number
-            className={`w-full mt-4 px-4 py-2 text-sm font-medium rounded-md transition-colors duration-200 shadow-xl ${buttonBg} flex items-center justify-center`}
-            onClick={() => setIsMobileMenuOpen(false)}
-          >
-            <PhoneCall className="w-4 h-4 inline-block mr-2" />
-            Call Now
-          </a>
-        </ul>
+                {/* ⚡ Show border except last item */}
+                {index !== mainNavItems.length - 1 && (
+                  <div className="border-b border-dashed border-gray-300/80"></div>
+                )}
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </header>
   );
