@@ -20,7 +20,7 @@ export const sendFunc = async (
     });
 
     await sendmail({
-      to: ["saifalam.st@gmail.com"],
+      to: ["saifalam.st@gmail.com", "dreamcatcherstudio7@gmail.com"],
       name: name || "Website Visitor",
       subject: `New Inquiry: ${subject}`,
       body: emailBody,
